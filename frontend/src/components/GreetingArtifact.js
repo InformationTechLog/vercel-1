@@ -1,4 +1,4 @@
-{
+export const GreetingArtifact = {
   "_format": "hh-sol-artifact-1",
   "contractName": "Greeting",
   "sourceName": "contracts/Greeting.sol",
