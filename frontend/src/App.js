@@ -6,6 +6,8 @@ import { ContractCall } from "./components/ContractCall";
 import { keyframes } from "styled-components";
 import { ReactComponent as MySvg } from "./wlogo.svg";
 import { CallBallot } from "./components/CallBallot";
+import { ChakraProvider } from "@chakra-ui/react";
+
 <MySvg />;
 
 const MainTitleText = styled.p`
@@ -16,8 +18,10 @@ const MainTitleText = styled.p`
 `;
 
 const StyledAppDiv = styled.div`
-  display: grid;
-  grid-gap: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
 `;
 // -------------------------------------------------------
 
@@ -40,17 +44,19 @@ const StyledMyIcon = styled(MySvg)`
 
 function App() {
   return (
-    <StyledAppDiv>
-      <MainTitleText>
-        <StyledMyIcon />
-        조율해 DAO
-      </MainTitleText>
-      <Connect />
-      <WalletStatus />
-      <SignMessage />
-      <ContractCall />
-      <CallBallot />
-    </StyledAppDiv>
+    <ChakraProvider>
+      <StyledAppDiv>
+        <MainTitleText>
+          <StyledMyIcon />
+          조율해 DAO
+        </MainTitleText>
+        <Connect />
+        <WalletStatus />
+        <SignMessage />
+        <ContractCall />
+        <CallBallot />
+      </StyledAppDiv>
+    </ChakraProvider>
   );
 }
 

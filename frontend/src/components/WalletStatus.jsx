@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
-import styled from "styled-components";
+import { Flex, Text } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 
 const StyledWalletStatusDiv = styled.div`
   display: flex;
@@ -10,6 +11,15 @@ const StyledWalletStatusDiv = styled.div`
 `;
 // ------------------------------------------------------------------------------------------------------------------
 // 체인아이디
+
+const WalletTextLayout = ({ title, children }) => {
+  return (
+    <Flex>
+      <Text>{title}</Text>
+      <Text>{children}</Text>
+    </Flex>
+  );
+};
 
 const ChainId = () => {
   const { chainId } = useWeb3React();

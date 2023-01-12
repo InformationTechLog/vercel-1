@@ -3,7 +3,8 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 // src폴더로 artifact 이동 후 -경로설정 => ContractFactory에 넣기위해
 import GreetingArtifact from "../artifacts/contracts/Greeting.sol/Greeting.json";
-import styled from "styled-components";
+import styled from "@emotion/styled";
+import { Button, Text, Flex, Input } from "@chakra-ui/react";
 
 // ---------------CSS-------------------------------------------------------------------
 // ---------------CSS-------------------------------------------------------------------
@@ -108,7 +109,7 @@ export function ContractCall() {
       // error 대비-
       // greetingContract 배포되기전
       try {
-        const greetingContract = await Greeting.deploy("Hello, 조율해DAO");
+        const greetingContract = await Greeting.deploy("Hello, 조율해 DAO");
         // 배포된 컨트랙트에 입력값이 잘 출력되는지 확인하는 코드 (greeting contract안의 greet 함수 호출)
         const greeting = await greetingContract.greet();
 
@@ -181,45 +182,47 @@ export function ContractCall() {
     // 3.disabled {active안될경우 or ||혹은 greeting contract있으면 비활성화=배포된 자체 컨트랙트 오브젝트}
     //
     <>
-      <StyledDeployContractButton
+      <Button
         disabled={!active || greetingContract ? true : false}
         style={{
           borderColor: !active || greetingContract ? "unset" : "blue",
         }}
         onClick={handleDeployContract}
+        colorScheme={"blue"}
       >
-        Deploy Greeting Contract
-      </StyledDeployContractButton>
+        Deploy 목표 설정 Contract
+      </Button>
       <StyledGreetingDiv>
         <StyledLabel>Contract address</StyledLabel>
-        <div>
+        <Text color={greetingContractAddr ? "gray.800" : "red.300"}>
           {greetingContractAddr ? (
             greetingContractAddr
           ) : (
             <em>{`<Contract not yet deployed>`}</em>
           )}
-        </div>
-        <StyledLabel>Current greeting</StyledLabel>
-        <div>
+        </Text>
+        <Text fontWeight={"800"}>현재 목표</Text>
+        <Text color={greeting ? "gray.800" : "red.300"}>
           {greeting ? greeting : <em>{`<Contract not yet deployed>`}</em>}
-        </div>
-        <StyledLabel htmlFor="greetingInput">Set new greeting</StyledLabel>
-        <StyledInput
+        </Text>
+        <Text htmlFor="greetingInput" fontWeight={"800"}>
+          새로운 목표
+        </Text>
+        <Input
           id="greetingInput"
           type="text"
           placeholder={greeting ? "" : "<Contract not yet deployed>"}
           onChange={handleGreetingChange}
           style={{ fontStyle: greeting ? "normal" : "italic" }}
-        ></StyledInput>
-        <StyledButton
+          w={"250px"}
+        ></Input>
+        <Button
           disabled={!active || !greetingContract ? true : false}
-          style={{
-            borderColor: !active || !greetingContract ? "unset" : "blue",
-          }}
+          colorScheme={!active || !greetingContract ? "gray" : "blue"}
           onClick={handleGreetingSubmit}
         >
           Submit
-        </StyledButton>
+        </Button>
       </StyledGreetingDiv>
     </>
   );

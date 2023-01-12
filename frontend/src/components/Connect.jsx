@@ -4,10 +4,10 @@ import {
   UserRejectedRequestError,
 } from "@web3-react/injected-connector";
 import { useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { injected } from "../utils/connectors";
 import { useWeb3Connect, useInactiveListener } from "../utils/hooks";
-
+import { Button } from "@chakra-ui/react";
 function getErrorMessage(error) {
   let errorMessage;
 
@@ -84,15 +84,14 @@ function Activate() {
 
   return (
     <Nav>
-      <StyledActivateButton
+      <Button
         disabled={active}
-        style={{
-          borderColor: activating ? "orange" : active ? "unset" : "green",
-        }}
         onClick={handleActivate}
+        colorScheme={activating ? "yellow" : active ? "gray" : "green"}
+        w={"150px"}
       >
         Connect
-      </StyledActivateButton>
+      </Button>
     </Nav>
   );
 }
@@ -109,15 +108,15 @@ function Deactivate() {
 
   return (
     <Nav2>
-      <StyledDeactivateButton
+      <Button
         disabled={!active}
-        style={{
-          borderColor: active ? "red" : "unset",
-        }}
+        colorScheme={active ? "red" : "gray"}
         onClick={handleDeactivate}
+        w={"150px"}
+        mt={"10px"}
       >
         Disconnect
-      </StyledDeactivateButton>
+      </Button>
     </Nav2>
   );
 }

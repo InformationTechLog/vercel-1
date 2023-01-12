@@ -1,15 +1,7 @@
 import { useWeb3React } from "@web3-react/core";
 //useWeb3react hook사용
-import styled from "styled-components";
-
-const StyledButton = styled.button`
-  width: 150px;
-  height: 2rem;
-  border-radius: 1rem;
-  border-color: blue;
-  cursor: pointer;
-  place-self: center;
-`;
+import styled from "@emotion/styled";
+import { Button } from "@chakra-ui/react";
 
 //account=계정정보, active=액티브한지, library =프로바이더 정보 가져옴
 export function SignMessage() {
@@ -46,7 +38,8 @@ export function SignMessage() {
   }
 
   return (
-    <StyledButton
+    <Button
+      w={"200px"}
       disabled={!active ? true : false}
       style={{
         borderColor: !active ? "unset" : "blue",
@@ -54,6 +47,16 @@ export function SignMessage() {
       onClick={handleSignMessage}
     >
       Sign Message
-    </StyledButton>
+    </Button>
   );
 }
+
+  
+  // const StyledButton = styled.button`
+  //   width: 150px;
+  //   height: 2rem;
+  //   border-radius: 1rem;
+  //   border-color: blue;
+  //   cursor: pointer;
+  //   place-self: center;
+  // `;
