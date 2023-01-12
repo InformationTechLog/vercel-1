@@ -11,7 +11,6 @@ const StyledButton = styled.button`
   place-self: center;
 `;
 
-
 //account=계정정보, active=액티브한지, library =프로바이더 정보 가져옴
 export function SignMessage() {
   const context = useWeb3React();
