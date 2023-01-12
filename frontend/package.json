@@ -16,6 +16,16 @@
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.12.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
+    "ethers": "^5.7.2"
+  }
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

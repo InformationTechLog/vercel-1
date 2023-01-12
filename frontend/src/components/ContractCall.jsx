@@ -2,7 +2,8 @@ import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 // src폴더로 artifact 이동 후 -경로설정 => ContractFactory에 넣기위해
-import GreetingArtifact from "../artifacts/contracts/Greeting.sol/Greeting.json";
+// import GreetingArtifact from "./artifacts/contracts/Greeting.sol/Greeting.json";
+import GreetingArtifact from "./Greeting.json";
 import styled from "styled-components";
 
 // ---------------CSS-------------------------------------------------------------------
